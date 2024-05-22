@@ -161,12 +161,12 @@ if ($architecture -eq 'amd64') {
 & 'takeown' '/f' "$ScratchDisk\scratchdir\Windows\System32\Microsoft-Edge-Webview" '/r' >null
 & 'icacls' "$ScratchDisk\scratchdir\Windows\System32\Microsoft-Edge-Webview" '/grant' "$($adminGroup.Value):(F)" '/T' '/C' >null
 Remove-Item -Path "$ScratchDisk\scratchdir\Windows\System32\Microsoft-Edge-Webview" -Recurse -Force >null
-Write-Host "Removing OneDrive:"
-& 'takeown' '/f' "$ScratchDisk\scratchdir\Windows\System32\OneDriveSetup.exe" >null
-& 'icacls' "$ScratchDisk\scratchdir\Windows\System32\OneDriveSetup.exe" '/grant' "$($adminGroup.Value):(F)" '/T' '/C' >null
-Remove-Item -Path "$ScratchDisk\scratchdir\Windows\System32\OneDriveSetup.exe" -Force >null
-Write-Host "Removal complete!"
-Start-Sleep -Seconds 2
+# Write-Host "Removing OneDrive:"
+# & 'takeown' '/f' "$ScratchDisk\scratchdir\Windows\System32\Setup.exe" >null
+# 'icacls' "$ScratchDisk\scratchdir\Windows\System32\OneDriveSetup.exe" '/grant' "$($adminGroup.Value):(F)" '/T' '/C' >null
+# Remove-Item -Path "$ScratchDisk\scratchdir\Windows\System32\OneDriveSetup.exe" -Force >null
+# Write-Host "Removal complete!"
+# Start-Sleep -Seconds 2
 Clear-Host
 Write-Host "Loading registry..."
 reg load HKLM\zCOMPONENTS $ScratchDisk\scratchdir\Windows\System32\config\COMPONENTS >null
